@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body style="text-align:center;">
+<div ng-app="app">
+<div ng-controller="controller">
+<form action="javascript:void(0)"> Name: <input type="text"
+ng-model="user.fName" /><br> Email : <input type="text"
+ng-model="user.lName" /><br>
+Salary : <input type="text" ng-model="user.sal"><br> DOB : <input type="date" ng-model="user.dob">
+<br><br>
+<button ng-click="getData(user)"> SUBMIT
+</button>
+</form>
+<p><b>Name :</b> {{userData.fName|uppercase}}<br>
+<b>Email :</b> {{userData.lName|lowercase}}<br>
+<b> Salary:</b> {{userData.sal|currency:"₹ "}}<br>
+<b>Date of Birth:</b> {{ userData.dob|date : "dd.MM.y"}}<br>
+<ul>
+<b>Courses Completed :</b>
+<li ng-repeat= "x in courses | orderBy : 'name'">
+{{x.name + ", " + x.platform}}
+</li>
+</ul></p>
+</div>
+</div>
+</body>
+<script>
+var myApp = angular.module("app", []); myApp.controller("controller", function ($scope) {
+$scope.userData = '';
+$scope.getData = function (user) {
+$scope.userData = angular.copy(user);
+$scope.courses = [{ "name": "React Native", "platform": "Udemy"
+
+ 
+}, {
+"name": "Data Engineering",
+"platform": "Coursera"
+}, {
+"name": "Bootcamp in Project Management", "platform": "Udemy"
+},];
+};
+
+});
+</script>
+</html>
+

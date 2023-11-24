@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--ng-app directive tells AngularJS that myApp is the root element of the application -->
+<html ng-app="myApp">
+  <head>
+    <!--import the angularjs libraries-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: white;
+      }
+
+      h1 {
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>ATHLETICS FEDERATION OF INDIA</h1>
+    <!--hg-template indicates the pages that get loaded as per requirement-->
+    <script type="text/ng-template" id="first.html">
+      <h1>Cricket</h1>
+      <h2 style="color:black">  Cricket Where Skills Create Music!
+      </h2>
+      <h3>{{message}}</h3>
+    </script>
+    <script type="text/ng-template" id="second.html">
+        <h1>Football</h1>
+        <h2 style="color:black">
+      Game of Warriors<br> Apply now!
+        </h2>
+        <h3>{{message}}</h3>
+    </script>
+
+    <script type="text/ng-template" id="third.html">
+      <h1>Hockey</h1>
+      <h2 style="color:black">
+      Game of Legends<br> Apply now!
+      </h2>
+      <h3>{{message}}</h3>
+    </script>
+
+    <!-- Hyperlinks to load different pages dynamically -->
+    <a href="#/">Cricket</a>
+    <a href="#/second">Football</a>
+    <a href="#/third">Hockey</a>
+
+    <!--ng-view includes the rendered template of the current route into the main page-->
+    <div ng-view></div>
+
+    <script>
+      var app = angular.module("myApp", []);
+      var app = angular.module("myApp", ["ngRoute"]);
+      app.config(function ($routeProvider) {
+        $routeProvider
+          .when("/", {
+            templateUrl: "first.html",
+            controller: "FirstController",
+          })
+
+          .when("/second", {
+            templateUrl: "second.html",
+            controller: "SecondController",
+          })
+
+          .when("/third", {
+            templateUrl: "third.html",
+            controller: "ThirdController",
+          })
+
+          .otherwise({ redirectTo: "/" });
+      });
+
+      app.controller("FirstController", function ($scope) {
+        $scope.message = "Message From Cricket Federation";
+      });
+      app.controller("SecondController", function ($scope) {
+        $scope.message = "Message From Football Department";
+      });
+      app.controller("ThirdController", function ($scope) {
+        $scope.message = "Message From Hockey Department";
+      });
+    </script>
+  </body>
+</html>

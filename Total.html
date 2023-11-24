@@ -1,0 +1,10 @@
+<html>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <body>
+    <div ng-app="" ng-init="students=15;fees=1000">
+      Number of Students: <input type="number" ng-model="students" /> <br />
+      Fees: <input type="number" ng-model="fees" /> <br />
+      Total Fees: {{ students * fees }}
+    </div>
+  </body>
+</html>

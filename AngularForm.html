@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+input.ng-invalid { background-color:cyan;
+}
+input.ng-valid {
+background-color:lightgreen;
+}
+</style>
+<body ng-app="myApp" >
+<center>
+<form name="myForm">
+<div ng-controller="formCtrl">
+<b> First Name: </b><input type="text" ng-model="firstname"> <br>
+<b> Last Name: </b><input name="myInput" ng-model="myInput" required>
+<p>The input's valid state is:{{myForm.myInput.$valid}}</p>
+</div>
+<b>Select a college:</b>
+<select ng-model="myVar">
+<option value="">
+<option value="NMITD">NMITD
+<option value="SPIT">SPIT
+<option value="MET">MET
+</select>
+</form>
+<div ng-switch="myVar">
+<div ng-switch-when="NMITD">
+<h1>NMITD</h1>
+<p><b>Welcome to Navinchandra Mehta Institute of Technology and Development.</b></p>
+</div>
+<div ng-switch-when="SPIT">
+<h1>SPIT</h1>
+<p><b>Welcome to Sardar Patel Institute of Technology.</b></p>
+</div>
+<div ng-switch-when="MET">
+<h1>MET</h1>
+<p><b>Welcome to Mumbai Educational Trust.</b></p>
+</div>
+</div>
+<br>Year : <input type="radio" ng-model="employee.role" value="first" />First Year
+<input type="radio" ng-model="employee.role" value="second" />Second Year<br /></br>
+
+ 
+</center>
+<script>
+var app = angular.module('myApp', []); app.controller('formCtrl', function($scope) {
+$scope.firstname = "Meghna";
+});
+</script>
+</body>
+</html>
